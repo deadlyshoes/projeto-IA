@@ -1,4 +1,4 @@
-package aima.core.search.csp.examples;
+package principal;
 
 public class Horario {
 	public int dia, inicio, duracao;
@@ -6,14 +6,14 @@ public class Horario {
 	
 	/* mapeamento de dias
 	 * 0 <=> segunda
-	 * 1 <=> terÃ§a
+	 * 1 <=> terça
 	 * 2 <=> quarta
 	 * 3 <=> quinta
 	 * 4 <=> sexta
-	 * 5 <=> sÃ¡bado
+	 * 5 <=> sábado
 	 */
 	
-	// inÃ­cio entre 0 e 23
+	// início entre 0 e 23
 	
 	public void calcIntervalo() {
 		this.l = 24 * this.dia + this.inicio;
@@ -30,8 +30,13 @@ public class Horario {
 	
 	@Override
 	public boolean equals(Object o) {
-		Horario b = (Horario)o;
-
+		if (o == null)
+			return false;
+		
+		if (o.getClass() != this.getClass())
+			return false;
+		
+		final Horario b = (Horario)o;
 		return (
 			// inicia no meio
 			b.l >= this.l && b.l < this.r ||
@@ -41,4 +46,34 @@ public class Horario {
 			b.l < this.l && b.r > this.r
 		);
 	}
+	
+	/*public int getInicio() {
+		return inicio;
+	}
+
+	public void setInicio(int inicio) {
+		if (inicio < 0 || inicio > 23)
+			System.out.println("falha ao mudar início");
+		else
+			this.inicio = inicio;
+	}
+
+	public int getDuracao() {
+		return duracao;
+	}
+
+	public void setDuracao(int duracao) {
+		this.duracao = duracao;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public void setDia(int dia) {
+		if (dia < 0 || dia > 5)
+			System.out.println("falha ao mudar dia");
+		else
+			this.dia = dia;
+	}*/
 }
